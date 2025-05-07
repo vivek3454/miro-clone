@@ -126,3 +126,11 @@ body,
 :root{
   height: 100%;
 }
+
+.cl-internal-phfxlr{
+  width: 100%;
+}
+
+.cl-internal-phfxlr .cl-cardBox{
+  width: 100%;
+}
