@@ -134,3 +134,7 @@ body,
 .cl-internal-phfxlr .cl-cardBox{
   width: 100%;
 }
+
+button{
+  cursor: pointer;
+}
