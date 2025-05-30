@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { query } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 
 export const get = query({
     args: {
@@ -12,7 +12,7 @@ export const get = query({
             throw new Error("Unauthorized");
         }
 
-        const boards = ctx.db
+        const boards = await ctx.db
             .query("boards")
             .withIndex("by_org", (q) => q.eq("orgId", args.orgId))
             .order("desc")
