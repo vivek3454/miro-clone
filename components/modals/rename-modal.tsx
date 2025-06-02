@@ -9,13 +9,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useRenameModal } from "@/store/use-rename-modal";
-import { FormEvent, FormEventHandler, useEffect, useState } from "react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { useApiMutation } from "@/hooks/use-api-mutation";
 import { api } from "@/convex/_generated/api";
+import { useApiMutation } from "@/hooks/use-api-mutation";
+import { useRenameModal } from "@/store/use-rename-modal";
+import { FormEventHandler, useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 export const RenameModal = () => {
   const { mutate, pending } = useApiMutation(api.board.update);
