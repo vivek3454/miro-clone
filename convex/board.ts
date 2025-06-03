@@ -1,7 +1,7 @@
 import { v } from "convex/values";
 import { mutation } from "./_generated/server";
 
-const images = [
+const images = [ // TODO: Add more images
     "/placeholder/1.svg",
     "/placeholder/2.svg",
     "/placeholder/3.svg",
