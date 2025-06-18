@@ -7,7 +7,7 @@ export type Color = {
 export type Camera = {
     x: number;
     y: number;
-} | null
+}
 
 export enum LayerType {
     Rectangle,
