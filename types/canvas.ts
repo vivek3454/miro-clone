@@ -7,7 +7,7 @@ export type Color = {
 export type Camera = {
     x: number;
     y: number;
-}
+} | null
 
 export enum LayerType {
     Rectangle,
@@ -109,7 +109,7 @@ export type CanvasState =
     }
     | {
         mode: CanvasMode.Pressing;
-        origin:Point;
+        origin: Point;
     }
     | {
         mode: CanvasMode.Resizing;
@@ -127,3 +127,5 @@ export enum CanvasMode {
     Resizing,
     Pencil
 }
+
+export type Layer = RectangleLayer | EllipseLayer | PathLayer | TextLayer | NoteLayer
