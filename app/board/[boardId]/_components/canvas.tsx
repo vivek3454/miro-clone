@@ -24,6 +24,7 @@ import { useOthersMapped, useStorage } from "@liveblocks/react/suspense";
 import { LiveObject } from "@liveblocks/node";
 import { connectionIdToColor, pointerEventToCanvasPoint } from "@/lib/utils";
 import { LayerPreview } from "./layer-preview";
+import { SelectionBox } from "./selection-box";
 
 const MAX_LAYERS = 100;
 
@@ -195,7 +196,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         onPointerLeave={onPointerLeave}
         onPointerUp={onPointerUp}
       >
-        <g style={{ transform: `translate(${-camera?.x}px, ${-camera?.y}px)` }}>
+        <g style={{ transform: `translate(${camera?.x}px, ${camera?.y}px)` }}>
           {layerIds.map((layerId) => (
             <LayerPreview
               key={layerId}
@@ -204,6 +205,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
               selectionColor={layerIdsToColorSelection[layerId]}
             />
           ))}
+          <SelectionBox onResizeHandlePointerDown={()=>{}} />
           <CursorsPresence />
         </g>
       </svg>
