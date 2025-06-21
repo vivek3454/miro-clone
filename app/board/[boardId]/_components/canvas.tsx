@@ -1,6 +1,11 @@
 "use client";
 
 import {
+  connectionIdToColor,
+  pointerEventToCanvasPoint,
+  resizeBounds,
+} from "@/lib/utils";
+import {
   CanvasMode,
   CanvasState,
   Color,
@@ -9,6 +14,7 @@ import {
   Side,
   XYWH,
 } from "@/types/canvas";
+import { LiveObject } from "@liveblocks/node";
 import {
   useCanRedo,
   useCanUndo,
@@ -16,21 +22,16 @@ import {
   useMutation,
   useMyPresence,
 } from "@liveblocks/react";
+import { useOthersMapped, useStorage } from "@liveblocks/react/suspense";
+import { nanoid } from "nanoid";
 import React, { useCallback, useMemo, useState } from "react";
 import { CursorsPresence } from "./cursors-presence";
 import { Info } from "./info";
-import { Participants } from "./participants";
-import { Toolbar } from "./toolbar";
-import { nanoid } from "nanoid";
-import { useOthersMapped, useStorage } from "@liveblocks/react/suspense";
-import { LiveObject } from "@liveblocks/node";
-import {
-  connectionIdToColor,
-  pointerEventToCanvasPoint,
-  resizeBounds,
-} from "@/lib/utils";
 import { LayerPreview } from "./layer-preview";
+import { Participants } from "./participants";
 import { SelectionBox } from "./selection-box";
+import { SelectionTools } from "./selection-tools";
+import { Toolbar } from "./toolbar";
 
 const MAX_LAYERS = 100;
 
@@ -292,6 +293,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         undo={history.undo}
         redo={history.redo}
       />
+      <SelectionTools camera={camera} setLastUsedColor={setLastUsedColor} />
       <svg
         className="h-[100vh] w-[100vw]"
         onWheel={onWheel}
