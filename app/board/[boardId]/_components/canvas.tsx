@@ -278,14 +278,16 @@ export const Canvas = ({ boardId }: CanvasProps) => {
       y: camera.y,
     });
 
+    if (!current) return;
+
     if (canvasState.mode === CanvasMode.Pressing) {
-      startMultiSelection(current!, canvasState.origin);
+      startMultiSelection(current, canvasState.origin);
     } else if (canvasState.mode === CanvasMode.SelectionNet) {
-      updateSelectionNet(current!, canvasState.origin);
+      updateSelectionNet(current, canvasState.origin);
     } else if (canvasState.mode === CanvasMode.Translating) {
       translateSelectedLayers(current!);
     } else if (canvasState.mode === CanvasMode.Resizing) {
-      resizeSelectedLayer(current!);
+      resizeSelectedLayer(current);
     } else if (canvasState.mode === CanvasMode.Pencil) {
       continueDrawing(current, event);
     }
@@ -304,6 +306,8 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       const point = pointerEventToCanvasPoint(e, camera);
+
+      if (!point) return;
 
       if (canvasState.mode === CanvasMode.Inserting) {
         return;

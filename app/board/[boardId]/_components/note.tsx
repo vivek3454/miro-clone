@@ -1,5 +1,5 @@
 import { cn, colorToCss, getContrastingTextColor } from "@/lib/utils";
-import { NoteLayer, TextLayer } from "@/types/canvas";
+import { NoteLayer } from "@/types/canvas";
 import { useMutation } from "@liveblocks/react";
 import { Kalam } from "next/font/google";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
